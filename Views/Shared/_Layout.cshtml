@@ -1,0 +1,323 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>@ViewData["Title"] - thegioididong</title>
+    <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
+    <link rel="stylesheet" href="~/thegioididong.styles.css" asp-append-version="true" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/normalize/8.0.1/normalize.min.css"
+    />
+    <link rel="stylesheet" href="~/css/base.css" type="text/css" />
+    <link rel="stylesheet" href="~/css/main.css" type="text/css"/>
+    <link rel="stylesheet" href="~/css/index.css" type="text/css"/>
+    <link rel="stylesheet" href="~/css/footer.css" type="text/css"/>
+    <link
+      rel="stylesheet"
+      href="./assets/font/fontawesome-free-6.1.1-web/css/all.min.css"
+    />
+</head>
+<body>
+     <header class="header">
+        <div class="header__top">
+          <div class="header__items">
+            <a class="header__logo">
+              <img class="logo_img" src="./assets/img/logo2.webp" alt="" />
+            </a>
+
+            <a href="" class="header__addres">
+              <p>Xem giá, tồn tại kho:</p>
+              <p>Hồ Chí Minh</p>
+            </a>
+            <form action="/tim-kiem" class="header__search">
+              <input
+                id="skw"
+                type="text"
+                class="input-search"
+                onkeyup="suggestSearch(event);"
+                placeholder="Bạn tìm gì..."
+                name="key"
+                autocomplete="off"
+                maxlength="100"
+              />
+              <button type="submit">
+                <i class="fa-solid fa-magnifying-glass"></i>
+              </button>
+              <div id="search-result"></div>
+            </form>
+
+            <a href="" class="header__order"> Lịch sử mua hàng </a>
+            <a href="" class="header__cart">
+              <div class="cart__logo">
+                <i class="fa-solid fa-cart-shopping"></i>
+              </div>
+              <span class="list__text">Giỏ hàng</span>
+            </a>
+            <div class="header__list">
+              <div class="list__24h">
+                <a class="list__text">24h<br />Công nghệ</a>
+              </div>
+              <div class="bordercol"></div>
+              <div class="HoiDap">
+                <a href="" class="list__text">Hỏi Đáp</a>
+              </div>
+              <div class="bordercol"></div>
+              <div class="Gameapp">
+                <a href="" class="list__text">Game App</a>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="header__main">
+          <div class="main__items">
+            <ul class="main-menu">
+              <li class="">
+                <a href="/dtdd">
+                  <i>
+                    <img
+                      class="list__pro"
+                      src="https://cdn.tgdd.vn//content/icon-phone-96x96-2.png"
+                    />
+                  </i>
+                  <span class="">Điện thoại</span>
+                </a>
+              </li>
+              <li class="">
+                <a href="/laptop-ldp">
+                  <i>
+                    <img
+                      class="list__pro"
+                      src="https://cdn.tgdd.vn//content/icon-laptop-96x96-1.png"
+                    />
+                  </i>
+                  <span class="">Laptop</span>
+                </a>
+              </li>
+              <li class="">
+                <a href="/may-tinh-bang">
+                  <i>
+                    <img
+                      class="list__pro"
+                      src="https://cdn.tgdd.vn//content/icon-tablet-96x96-1.png"
+                    />
+                  </i>
+                  <span class="">Tablet</span>
+                </a>
+              </li>
+              <li class="has-list">
+                <a href="/phu-kien">
+                  <i>
+                    <img
+                      class="list__pro"
+                      src="https://cdn.tgdd.vn//content/icon-phu-kien-96x96-1.png"
+                    />
+                  </i>
+                  <span class="has-child">Phụ kiện</span>
+                </a>
+                
+              </li>
+              <li class="">
+                <a href="/dong-ho-thong-minh-ldp">
+                  <i>
+                    <img
+                      class="list__pro"
+                      src="https://cdn.tgdd.vn//content/icon-smartwatch-96x96-1.png"
+                    />
+                  </i>
+                  <span class="">Smartwatch</span>
+                </a>
+              </li>
+              <li class="">
+                <a href="/dong-ho">
+                    <i>
+                        <img  class="list__pro" src="https://cdn.tgdd.vn//content/watch-icon-96x96.png">
+                    </i>
+                    <span class="">Đồng hồ</span>
+                </a>
+            </li>
+              <li class="has-list">
+                <a href="/avaji">
+                  <i>
+                    <img
+                      class="list__pro"
+                      src="https://cdn.tgdd.vn//content/icon-avaji-96x96-1.png"
+                    />
+                  </i>
+                  <span class="has-child">AVAJi</span>
+                </a>
+                <!-- <div class="navmwg limit-width">
+                                        <div class="item-child no-child-final">
+                                                <a href="/dong-ho"><h3>Đồng hồ thời trang</h3></a>
+                                        </div>
+                                        <div class="item-child no-child-final">
+                                                <a href="/mat-kinh"><h3>Mắt kính</h3></a>
+                                        </div>
+                                        <div class="item-child no-child-final">
+                                                <a href="/trang-suc"><h3>Trang sức</h3></a>
+                                        </div>
+                                </div> -->
+              </li>
+              <li class="has-list">
+                <a href="/pc-may-in">
+                  <i>
+                    <img
+                      class="list__pro"
+                      src="https://cdn.tgdd.vn//content/icon-pc-96x96.png"
+                    />
+                  </i>
+                  <span class="has-child">PC, Máy in</span>
+                </a>
+                <!-- <div class="navmwg limit-width">
+                                        <div class="item-child no-child-final">
+                                                <a href="/may-in"><h3>Máy in</h3></a>
+                                        </div>
+                                        <div class="item-child no-child-final">
+                                                <a href="/muc-in"><h3>Mực in</h3></a>
+                                        </div>
+                                        <div class="item-child no-child-final">
+                                                <a href="/man-hinh-may-tinh"><h3>Màn hình máy tính</h3></a>
+                                        </div>
+                                        <div class="item-child no-child-final">
+                                                <a href="/may-tinh-de-ban"><h3>Máy tính để bàn</h3></a>
+                                        </div>
+                                </div> -->
+              </li>
+
+              <div class="list__DV">
+                <li class="">
+                  <a href="/may-doi-tra">
+                    <i>
+                      <img />
+                    </i>
+                    <span class="">Máy cũ giá rẻ</span>
+                  </a>
+                </li>
+
+                <li class="">
+                  <a href="/sim-so-dep">
+                    <i>
+                      <img />
+                    </i>
+                    <span class="">Sim, Thẻ cào</span>
+                  </a>
+                </li>
+                <li class="has-list">
+                  <a href="/tien-ich">
+                    <i>
+                      <img />
+                    </i>
+                    <span class="has-child">Dịch vụ tiện ích</span>
+                  </a>
+                  <!-- <div class="navmwg limit-width">
+                                        <div class="item-child no-child-final">
+                                                <a href="/tien-ich/thanh-toan-tra-gop"><h3>Đóng tiền trả góp</h3></a>
+                                        </div>
+                                        <div class="item-child no-child-final">
+                                                <a href="/tien-ich/thanh-toan-tien-dien"><h3>Đóng tiền điện</h3></a>
+                                        </div>
+                                        <div class="item-child no-child-final">
+                                                <a href="/tien-ich/thanh-toan-tien-nuoc"><h3>Đóng tiền nước</h3></a>
+                                        </div>
+                                        <div class="item-child no-child-final">
+                                                <a href="/tien-ich/thanh-toan-internet-fpt"><h3>Đóng tiền net FPT</h3></a>
+                                        </div>
+                                        <div class="item-child no-child-final">
+                                                <a href="/tien-ich/thanh-toan-internet-vnpt"><h3>Đóng tiền net, cáp VNPT</h3></a>
+                                        </div>
+                                        <div class="item-child no-child-final">
+                                                <a href="/tien-ich/thanh-toan-bao-hiem"><h3>Đóng tiền bảo hiểm</h3></a>
+                                        </div>
+                                        <div class="item-child no-child-final">
+                                                <a href="/tien-ich/thanh-toan-ve-tau-xe"><h3>Đóng tiền vé tàu, xe, máy bay</h3></a>
+                                        </div>
+                                        <div class="item-child no-child-final">
+                                                <a href="/tien-ich/thanh-toan-vien-phi"><h3>Đóng viện phí ĐH Y Dược TP. HCM</h3></a>
+                                        </div>
+                                        <div class="item-child no-child-final">
+                                                <a href="/tien-ich/nap-tien-dien-thoai-tra-sau"><h3>Đóng cước điện thoại trả sau</h3></a>
+                                        </div>
+                                        <div class="item-child no-child-final">
+                                                <a href="/tien-ich/bao-hiem-o-to-xe-may"><h3>Mua bảo hiểm xe máy, ô tô</h3></a>
+                                        </div>
+                                </div> -->
+                </li>
+              </div>
+            </ul>
+          </div>
+        </div>
+      </header>
+    <div class="container">
+        <main role="main" class="pb-3">
+            @RenderBody()
+        </main>
+    </div>
+
+      <footer class="footer">
+        <section class="clearfix footer__top" style="display: flex">
+          <div class="footer-col">
+            <ul class="f-listmenu">
+              <li><p>Chính sách bảo hành</p></li>
+              <li><p>Giao Hàng & Thanh Toán</p></li>
+              <li><p>Quy chế hoạt động</p></li>
+              <li><p>Cảnh bảo giả mạo</p></li>
+            </ul>
+          </div>
+          <div class="footer-col">
+            <ul class="f-listmenu">
+              <li><p>Giới thiệu công ty (MWG.vn)</p></li>
+              <li><p>Tuyển dụng</p></li>
+              <li><p>Gửi góp ý , khiếu nại</p></li>
+            </ul>
+          </div>
+          <div class="footer-col">
+            <ul class="f-listmenu">
+              <li>
+                <p><strong>Tổng đài hỗ trợ</strong> (Miễn phí gọi)</p>
+              </li>
+              <li>
+                <p>Gọi mua: <span>1800.1060</span> (7.30 - 22.00)</p>
+              </li>
+              <li>
+                <p>Kỹ Thuật: <span>1800.1763</span> (7.30 - 22.00)</p>
+              </li>
+              <li>
+                <p>Khiếu nãi: <span>1800.1062</span> (7.30 - 21.30)</p>
+              </li>
+              <li>
+                <p>Bảo Hành: <span>1800.1064</span> (7.30 - 21.00)</p>
+              </li>
+            </ul>
+          </div>
+          <div class="footer-col">
+            <div class="f-social">
+              <p class="link-fb">
+                <img class="icon-fb" src="assets/img/logo-icon-footer2.png"></img>
+                3735.7k Fan
+              </p>
+              <p></p>
+            </div>
+          </div>
+        </section>
+        <div class="footer-end">
+          <section>
+            <p>
+              © 2018. Công ty cổ phần Thế Giới Di Động. GPDKKD: 0303217354 do sở
+              KH & ĐT TP.HCM cấp ngày 02/01/2007. GPMXH: 238/GP-BTTTT do Bộ
+              Thông Tin và Truyền Thông cấp ngày 04/06/2020. Địa chỉ: 128 Trần
+              Quang Khải, P. Tân Định, Q.1, TP.Hồ Chí Minh. Điện thoại: 028
+              38125960. Email: cskh@thegioididong.com. Chịu trách nhiệm nội
+              dung: Huỳnh Văn Tốt. Xem chính sách sử dụng
+            </p>
+          </section>
+        </div>
+      </footer>
+    <script src="~/lib/jquery/dist/jquery.min.js"></script>
+    <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="~/js/site.js" asp-append-version="true"></script>
+    @await RenderSectionAsync("Scripts", required: false)
+</body>
+</html>

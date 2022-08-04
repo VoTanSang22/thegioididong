@@ -1,0 +1,65 @@
+﻿@model thegioididong.Models.Manufacturer
+
+@{
+    ViewData["Title"] = "Create";
+    Layout = "~/Views/Shared/admin.cshtml";
+}
+
+
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}
+<style>
+
+    .form-add {
+        background-color: #fdcb6e;
+        color: black;
+        width: 600px;
+        margin-left: 20%;
+        height: 200px;
+        padding-top: 30px;
+        border-radius: 10px;
+    }
+
+    .row {
+        margin-top: 5%;
+    }
+
+        .row h1 {
+            margin-left: -30px;
+            text-align: center;
+        }
+
+    .form-group input {
+        width: 400px;
+    }
+</style>
+
+<div class="row">
+    <div style="margin-top:40px; ">
+        <h1>Thêm nhà sản xuất</h1>
+        <div class=" form-add">
+            <form asp-action="Create">
+               <div asp-validation-summary="ModelOnly" class="text-danger"> </div>
+            <div class="form-group" style="margin-right:50px; margin-left:100px">
+                <label asp-for="Name_manufacturer" class="control-label">Nhà sản xuất</label>
+                <input asp-for="Name_manufacturer" class="form-control" />
+                <span asp-validation-for="Name_manufacturer" class="text-danger"></span>
+            </div>
+                <div class="form-group" style="display:flex ; padding-top:30px; margin-left:160px;">
+
+                    <input type="submit" value="Tạo sản phẩm" class="btn btn-primary" style="width:130px;" />
+                    <div style=" padding-left:30px">
+                        <a asp-action="Index" class="btn btn-danger">Quay về trang</a>
+                    </div>
+                </div>
+
+
+            </form>
+        </div>
+    </div>
+
+</div>
+
+

@@ -1,0 +1,124 @@
+﻿@model IEnumerable<thegioididong.Models.Product>
+
+@{
+    ViewData["Title"] = "Index";
+    Layout = "admin";
+}
+
+<style>
+    .button-a a {
+        margin-top: 30px;
+       
+    }
+    tr td p {
+         margin-top: 30px;
+        
+    }
+</style>
+
+}
+<div class="main-body-content  ets-pt" style="margin-top:20px; width:1340px;margin-left:-60px;margin-top:40px">
+    <div class="table-responsive bg-light" style="margin-left:-60px ; width:1260px">
+
+         <br />
+        <i class="name-i" >Quản Lí Sản Phẩm</i>
+        <br />
+        <div style="display:flex;">
+             <a asp-action="Create" class="btn btn-primary bi bi-file-earmark-plus-fill" style="margin: 20 0 20 40;"> Thêm Sản Phẩm</a>
+             <a href="/Categories/Create" class="btn btn-primary bi bi-file-earmark-plus-fill" style="margin: 20 0 20 40;"> Thêm Nhà Sản Xuất</a>
+             <a href="/Manufacturers/Create" class="btn btn-primary bi bi-file-earmark-plus-fill" style="margin: 20 0 20 40;"> Thêm Loại Sản Phẩm</a>
+
+       
+        </div>
+       
+        <br />
+        <table id="zero_config"
+               class="table table-striped table-bordered no-wrap">
+            <thead>
+                <tr>
+                    <th>
+                        Ảnh
+                    </th>
+                    <th>
+                        Tên Sản Phẩm
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.Price)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.Ram)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.Rom)
+                    </th>
+                    <th>
+                        Nhà Sản Xuất
+                    </th>
+                    <th>
+                        Loại Sản Phẩm
+                    </th>
+                    <th></th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var item in Model)
+                {
+                    if (true)
+                    {
+                        <tr>
+                            <td>
+                                <img src="@item.Images.FirstOrDefault().link_image"/>
+                               
+
+                            </td>
+                            <td>
+                                <p>
+                                    @Html.DisplayFor(modelItem => item.Pro_Name)
+                                </p>
+
+
+                            </td>
+                            <td>
+                                <p>
+                                    @Html.DisplayFor(modelItem => item.Price)
+                                </p>
+
+                            </td>
+                            <td>
+                                <p>
+                                    @Html.DisplayFor(modelItem => item.Ram)
+                                </p>
+
+                            </td>
+                            <td>
+                                <p>
+                                    @Html.DisplayFor(modelItem => item.Rom)
+                                </p>
+
+                            </td>
+                            <td>
+                                <p>
+                                    @Html.DisplayFor(modelItem => item.Manufacturer.Name_manufacturer)
+                                </p>
+
+                            </td>
+                            <td>
+                                <p>
+                                    @Html.DisplayFor(modelItem => item.Category.Name_Category)
+                                </p>
+
+                            </td>
+                            <td class="button-a">
+                                <a asp-action="Edit" asp-route-id="@item.Id_pro" class="btn btn-primary bi bi-pencil-square"> Chỉnh Sửa</a>
+                                <a asp-action="Details" asp-route-id="@item.Id_pro" class="btn btn-secondary bi bi-exclamation-circle-fill"> Thông Tin</a>
+                                <a asp-action="Delete" asp-route-id="@item.Id_pro" class="btn btn-danger bi bi-recycle"> Xóa</a>
+                                <a href="/Images/Create"  class="btn btn-success bi bi-cloud-arrow-up-fill"> Thêm Ảnh</a>
+                            </td>
+                        </tr>
+                    }
+                }
+            </tbody>
+        </table>
+
+    </div>
+</div>

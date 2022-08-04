@@ -1,0 +1,791 @@
+﻿@model thegioididong.Models.Product
+
+@{
+    ViewData["Title"] = "Details";
+    Layout = null;
+}
+
+@*<h1>Details</h1>
+
+    <div>
+    <h4>Product</h4>
+    <hr />
+    <dl class="row">
+    <dt class = "col-sm-2">
+    @Html.DisplayNameFor(model => model.Pro_Name)
+    </dt>
+    <dd class = "col-sm-10">
+    @Html.DisplayFor(model => model.Pro_Name)
+    </dd>
+    <dt class = "col-sm-2">
+    @Html.DisplayNameFor(model => model.Des)
+    </dt>
+    <dd class = "col-sm-10">
+    @Html.DisplayFor(model => model.Des)
+    </dd>
+    <dt class = "col-sm-2">
+    @Html.DisplayNameFor(model => model.Price)
+    </dt>
+    <dd class = "col-sm-10">
+    @Html.DisplayFor(model => model.Price)
+    </dd>
+    <dt class = "col-sm-2">
+    @Html.DisplayNameFor(model => model.Ram)
+    </dt>
+    <dd class = "col-sm-10">
+    @Html.DisplayFor(model => model.Ram)
+    </dd>
+    <dt class = "col-sm-2">
+    @Html.DisplayNameFor(model => model.Rom)
+    </dt>
+    <dd class = "col-sm-10">
+    @Html.DisplayFor(model => model.Rom)
+    </dd>
+    <dt class = "col-sm-2">
+    @Html.DisplayNameFor(model => model.Manufacturer)
+    </dt>
+    <dd class = "col-sm-10">
+    @Html.DisplayFor(model => model.Manufacturer.Name_manufacturer)
+    </dd>
+    <dt class = "col-sm-2">
+    @Html.DisplayNameFor(model => model.Category)
+    </dt>
+    <dd class = "col-sm-10">
+    @Html.DisplayFor(model => model.Category.Name_Category)
+    </dd>
+    </dl>
+    </div>
+    <div>
+    <a asp-action="Edit" asp-route-id="@Model?.Id_pro">Edit</a> |
+    <a asp-action="Index">Back to List</a>
+    </div>*@
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>
+        Thegioididong.com - Điện thoại, Laptop, Phụ kiện, Đồng hồ chính hãng
+    </title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/8.0.1/normalize.min.css" type="text/css"/>
+    <link rel="stylesheet" href="~/assets/css/base.css" type="text/css"/>
+    <link rel="stylesheet" href="~/assets/css/main.css" type="text/css"/>
+    <link rel="stylesheet" href="~/assets/css/index.css" type="text/css"/>
+    <link rel="stylesheet" href="~/assets/css/footer.css" type="text/css"/>
+    <link rel="stylesheet" href="~/assets/css/dienthoai.css"type="text/css">
+    <link rel="stylesheet" href="~/assets/css/tablet.css"type="text/css">
+    <link rel="stylesheet" href="~/assets/css/phukien.css"type="text/css">
+    <link rel="stylesheet" href="~/assets/css/dongho.css"type="text/css">
+    <link rel="stylesheet" href="~/assets/css/smartwatch.css"type="text/css">
+    <link rel="stylesheet" href="~/assets/css/chitiet.css"type="text/css">
+    <link rel="stylesheet" href="~/assets/font/fontawesome-free-6.1.1-web/css/all.min.css" type="text/css"/>
+</head>
+<body>
+    <header class="header">
+        <div class="grid">
+            <div class="header__top">
+                <div class="header__items">
+                    <a class="header__logo">
+                        <img class="logo_img" src="~/assets/img/logo2.webp" alt="" />
+                    </a>
+
+                    <a href="" class="header__addres">
+                        <p>Xem giá, tồn tại kho:</p>
+                        <p>Hồ Chí Minh</p>
+                    </a>
+                    <form action="/tim-kiem" class="header__search">
+                        <input id="skw" type="text" class="input-search" onkeyup="suggestSearch(event);"
+                               placeholder="Bạn tìm gì..." name="key" autocomplete="off" maxlength="100" />
+                        <button type="submit">
+                            <i class="fa-solid fa-magnifying-glass"></i>
+                        </button>
+                        <div id="search-result"></div>
+                    </form>
+
+                    <a href="" class="header__order"> Lịch sử mua hàng </a>
+                    <a href="" class="header__cart">
+                        <div class="cart__logo">
+                            <i class="fa-solid fa-cart-shopping"></i>
+                        </div>
+                        <span class="list__text">Giỏ hàng</span>
+                    </a>
+                </div>
+            </div>
+            <div class="header__main">
+                <div class="main__items">
+                    <ul class="main-menu">
+                        <li class="">
+                            <a href="#dienthoai">
+                                <i>
+                                    <img class="list__pro" src="https://cdn.tgdd.vn//content/icon-phone-96x96-2.png" />
+                                </i>
+                                <span> Điện thoại</span>
+                            </a>
+                        </li>
+                        <li class="">
+                            <a href="#laptop">
+                                <i>
+                                    <img class="list__pro" src="https://cdn.tgdd.vn//content/icon-laptop-96x96-1.png" />
+                                </i>
+                                <span class="">Laptop</span>
+                            </a>
+                        </li>
+                        <li class="">
+                            <a href="#tablet">
+                                <i>
+                                    <img class="list__pro" src="https://cdn.tgdd.vn//content/icon-tablet-96x96-1.png" />
+                                </i>
+                                <span class="">Tablet</span>
+                            </a>
+                        </li>
+                        <li class="has-list">
+                            <a href="#phukien">
+                                <i>
+                                    <img class="list__pro" src="https://cdn.tgdd.vn//content/icon-phu-kien-96x96-1.png" />
+                                </i>
+                                <span class="has-child">Phụ kiện</span>
+                            </a>
+
+                        </li>
+                        <li class="">
+                            <a href="#smartwatch">
+                                <i>
+                                    <img class="list__pro" src="https://cdn.tgdd.vn//content/icon-smartwatch-96x96-1.png" />
+                                </i>
+                                <span class="">Smartwatch</span>
+                            </a>
+                        </li>
+                        <li class="">
+                            <a href="#dongho">
+                                <i>
+                                    <img class="list__pro" src="https://cdn.tgdd.vn//content/watch-icon-96x96.png">
+                                </i>
+                                <span class="">Đồng hồ</span>
+                            </a>
+                        </li>
+
+                        <li class="has-list">
+                            <a href="#mayin">
+                                <i>
+                                    <img class="list__pro" src="https://cdn.tgdd.vn//content/icon-pc-96x96.png" />
+                                </i>
+                                <span class="has-child">PC, Máy in</span>
+                            </a>
+
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </header>
+    <!-- chi tiet don hang -->
+    <section data-id="246199" data-cate-id="42" class="detail ">
+        <ul class="breadcrumb">
+            <li>
+                <a href="/Home/Index">@Html.DisplayFor(model => model.Category.Name_Category)</a>
+                <meta property="position" content="1">
+            </li>
+            <li>
+                <span>›</span>
+                <a href="/dtdd-samsung">@Html.DisplayFor(model => model.Category.Name_Category) @Html.DisplayFor(model => model.Manufacturer.Name_manufacturer)</a>
+                <meta property="position" content="2">
+            </li>
+        </ul>
+
+
+        <h1>@Html.DisplayFor(model => model.Pro_Name)</h1>
+
+
+        <div class="box02">
+            <div class="box02__left">
+
+                <div class="detail-rate">
+                    <p>
+                        <i class="fa-solid fa-star"></i>
+                        <i class="fa-solid fa-star"></i>
+                        <i class="fa-solid fa-star"></i>
+                        <i class="fa-solid fa-star"></i>
+                        <i class="fa-solid fa-star"></i>
+                    </p>
+                    <p class="detail-rate-total">41 <span>đánh giá</span></p>
+                </div>
+            </div>
+        </div>
+
+        <div class="box_main">
+            <div class="box_left">
+
+                <div class="box01 ">
+                    <div class="box01__show">
+                        <div class="show-tab active" data-gallery-id="featured-images-gallery" data-color-id="0">
+                            <div class="detail-slider owl-carousel owl-loaded owl-drag">
+
+
+
+                                <div class="owl-stage-outer owl-height" style="height: 396.76px;">
+                                    <div class="owl-stage" style="transform: translate3d(0px, 0px, 0px); transition: all 0s ease 0s; width: 6390px;">
+                                        <div class="owl-item active" style="width: 710px;">
+                                            <a href="javascript:void(0)" class="slider-item video-item" data-gallery-id="featured-images-gallery" data-color-id="0" data-picture-id="221858" data-video-id="nswesAQ0MGM" data-index="0" data-time="0">
+                                                <img src="@Model.Images.FirstOrDefault().link_image" alt="Samsung Galaxy A33 5G 6GB" width="710" height="394">
+                                                <i class="icondetail-videoop iconvideo"></i>
+
+
+
+                                            </a>
+                                        </div><div class="owl-item" style="width: 710px; display: none;">
+                                            <a href="javascript:void(0)" class="slider-item slider-policy" data-gallery-id="featured-images-gallery" data-color-id="0" data-index="8">
+                                                <img class="owl-lazy" data-src="//cdn.tgdd.vn/mwgcart/mwgcore/ContentMwg/images/bg_csmh_tgdd-min.png?v=11" width="710" height="394" alt="Chính sách đổi trả" style="opacity:0;">
+                                                <img class="si-ghtn hide" data-src="//cdn.tgdd.vn/mwgcart/mwgcore/ContentMwg/images/img_giaohang_tgdd-min.png" alt="Giao hàng tận nhà nhanh chóng">
+                                                <div>
+                                                    <p>
+                                                        Hư gì đổi nấy <b>12 tháng</b>  tại 3216 siêu thị toàn quốc (miễn phí tháng đầu) <a href="https://www.thegioididong.com/chinh-sach-bao-hanh-san-pham"></a>
+                                                        <a href="javascript:;" onclick="showPopupPolicy()" title="Chính sách đổi trả">
+                                                            Xem chi tiết
+                                                        </a>
+                                                    </p><p>
+                                                        Bảo hành <b>chính hãng điện thoại 1 năm</b> tại các trung tâm bảo hành hãng
+                                                        <a href="/bao-hanh/samsung" target="_blank" title="Chính sách bảo hành">
+                                                            Xem địa chỉ bảo hành
+                                                        </a>
+
+                                                    </p>
+                                                </div>
+                                            </a>
+                                        </div>
+                                    </div>
+                                </div><div class="owl-nav"><button type="button" role="presentation" class="owl-prev disabled"></button><button type="button" role="presentation" class="owl-next"></button></div><div class="owl-dots disabled"></div>
+                            </div>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+                <div class="popup-overlay">
+                    <div class="popup-overlay__popup-video-gallery">
+                        <div class="close-popup"><i></i></div>
+                        <div id="video-player"></div>
+                    </div>
+                </div>
+                <span style="display: none;" id="show-popup-unbox-gallery" data-is-360-gallery="false" class="read-full" data-gallery-id="unbox-gallery" data-color-id="0"></span>
+                <span style="display: none;" id="show-popup-360-degree-gallery" data-is-360-gallery="true" class="read-full" data-gallery-id="360-degree-gallery" data-color-id="0"></span>
+                <span style="display: none;" id="show-popup-specification-gallery" data-is-360-gallery="false" class="read-full" data-gallery-id="specification-gallery" data-color-id="0"></span>
+                <span style="display: none;" id="show-popup-article-gallery" data-is-360-gallery="false" data-is-article-gallery="true" class="read-full" data-gallery-id="article-gallery" data-color-id="0"></span>
+                <div class="popup-video-rating">
+
+                    <b class="popup-video-rating__thank-you">Cảm ơn bạn đã đánh giá video</b>
+                </div>
+
+                <div class="manu-info-popup">
+                    <div class="manu-info-popup__content">
+                        <span class="manu-info-popup__content__btn-close"></span>
+                        <p class="manu-info-popup__content__title">
+                            Giới thiệu về hãng
+                            <img width="70" height="30" data-src="//cdn.tgdd.vn/Brand/1/samsungnew-220x48-1.png" alt="Samsung" class="lazyload">
+                        </p>
+                        <div class="manu-info-popup__content__desc">
+                            <p>(Hàn Quốc)</p>
+                        </div>
+                    </div>
+                </div>
+
+                <script type="text/javascript" id="www-widgetapi-script" src="https://www.youtube.com/s/player/17327fbd/www-widgetapi.vflset/www-widgetapi.js" async=""></script><script async="" src="https://www.googletagmanager.com/gtm.js?id=GTM-WKQZL8"></script><script src="https://www.youtube.com/iframe_api"></script><script>
+                                                                                                                                                                                                                                                                                                                                     setTimeout(function() {
+                                                                                                                                                                                                                                                                                                                                         var tag = document.createElement('script');
+                                                                                                                                                                                                                                                                                                                                         tag.src = "https://www.youtube.com/iframe_api";
+                                                                                                                                                                                                                                                                                                                                         var firstScriptTag = document.getElementsByTagName('script')[0];
+                                                                                                                                                                                                                                                                                                                                         firstScriptTag.parentNode.insertBefore(tag, firstScriptTag);
+                                                                                                                                                                                                                                                                                                                                     }, 100);
+                </script>
+
+
+
+                <div class="policy_intuitive cate42 scenarioNomal">
+                    <div class="policy">
+                        <ul class="policy__list">
+                            <li>
+                                <div class="iconl">
+                                    <i class="icondetail-doimoi"></i>
+                                </div>
+                                <p>
+                                    Hư gì đổi nấy <b>12 tháng</b>  tại 3216 siêu thị toàn quốc (miễn phí tháng đầu) <a href="https://www.thegioididong.com/chinh-sach-bao-hanh-san-pham"></a>
+                                    <a href="javascript:;" onclick="showPopupPolicy()" title="Chính sách đổi trả">
+                                        Xem chi tiết
+                                    </a>
+                                </p>
+                            </li>
+                            <li data-field="IsSameBHAndDT">
+                                <div class="iconl">
+                                    <i class="icondetail-baohanh"></i>
+                                </div>
+                                <p>
+                                    Bảo hành <b>chính hãng điện thoại 1 năm</b> tại các trung tâm bảo hành hãng
+                                    <a href="/bao-hanh/samsung" target="_blank" title="Chính sách bảo hành">
+                                        Xem địa chỉ bảo hành
+                                    </a>
+
+                                </p>
+                            </li>
+
+                            <li><div class="iconl"><i class="icondetail-sachhd"></i></div><p>Bộ sản phẩm gồm: Hộp, Sách hướng dẫn, Cây lấy sim, Cáp Type C <a href="javascript:" class="hinh-mo-hop-link">Xem hình</a></p></li>
+                        </ul>
+                    </div>
+                </div>
+
+
+
+
+                <div class="wrap_wrtp hide" id="popup-materialsfee">
+                    <div class="pop">
+                    </div>
+                </div>
+
+
+                <div class="box-available"></div>
+                <div class="border7"></div>
+
+                <div class="border7"></div>
+
+
+
+                <div class="border7"></div>
+                <div class="border7"></div>
+
+
+
+                <div class="box-border">
+                    <div class="rating " id="danhgia">
+                        <p class="rating__title">Đánh giá @Html.DisplayFor(model => model.Pro_Name)</p>
+
+                        <div class="rating-star left">
+                            <div class="rating-left">
+                                <div class="rating-top">
+                                    <p class="point">3.4</p>
+                                    <div class="list-star">
+                                        <i class="fa-solid fa-star"></i>
+                                        <i class="fa-solid fa-star"></i>
+                                        <i class="fa-solid fa-star"></i>
+
+                                    </div>
+                                    <a href="/dtdd/samsung-galaxy-a33/danh-gia" class="rating-total">41 đánh giá</a>
+
+                                </div>
+                                <ul class="rating-list">
+                                    <li>
+                                        <div class="number-star">
+                                            5
+                                            <i class="icondetail-blackstar"></i>
+                                        </div>
+                                        <div class="timeline-star">
+                                            <p class="timing" style="width: 41%"></p>
+                                        </div>
+                                        <a href="/dtdd/samsung-galaxy-a33/danh-gia?s=5&amp;p=1" class="number-percent">41%</a>
+                                    </li>
+                                    <li>
+                                        <div class="number-star">
+                                            4
+                                            <i class="icondetail-blackstar"></i>
+                                        </div>
+                                        <div class="timeline-star">
+                                            <p class="timing" style="width: 5%"></p>
+                                        </div>
+                                        <a href="/dtdd/samsung-galaxy-a33/danh-gia?s=4&amp;p=1" class="number-percent">5%</a>
+                                    </li>
+                                    <li>
+                                        <div class="number-star">
+                                            3
+                                            <i class="icondetail-blackstar"></i>
+                                        </div>
+                                        <div class="timeline-star">
+                                            <p class="timing" style="width: 20%"></p>
+                                        </div>
+                                        <a href="/dtdd/samsung-galaxy-a33/danh-gia?s=3&amp;p=1" class="number-percent">20%</a>
+                                    </li>
+                                    <li>
+                                        <div class="number-star">
+                                            2
+                                            <i class="icondetail-blackstar"></i>
+                                        </div>
+                                        <div class="timeline-star">
+                                            <p class="timing" style="width: 17%"></p>
+                                        </div>
+                                        <a href="/dtdd/samsung-galaxy-a33/danh-gia?s=2&amp;p=1" class="number-percent">17%</a>
+                                    </li>
+                                    <li>
+                                        <div class="number-star">
+                                            1
+                                            <i class="icondetail-blackstar"></i>
+                                        </div>
+                                        <div class="timeline-star">
+                                            <p class="timing" style="width: 17%"></p>
+                                        </div>
+                                        <a href="/dtdd/samsung-galaxy-a33/danh-gia?s=1&amp;p=1" class="number-percent">17%</a>
+                                    </li>
+                                </ul>
+
+
+                            </div>
+
+                        </div>
+
+                        <div class="rating-img right">
+                            <ul class="rating-img-list">
+                                <li class="js-Showcmt" data-idx="1" onclick="goToRSlide(1)">
+                                    <img class=" lazyloaded" data-src="https://cdn.tgdd.vn/comment/51681850/165481210150666441954324177621270LLNG.jpg" alt="" src="https://cdn.tgdd.vn/comment/51681850/165481210150666441954324177621270LLNG.jpg">
+                                </li>
+                                <li class="js-Showcmt" data-idx="2" onclick="goToRSlide(2)">
+                                    <img class=" lazyloaded" data-src="https://cdn.tgdd.vn/comment/51205260/16503677897650.32298333018402325-20220419183024.jpg" alt="" src="https://cdn.tgdd.vn/comment/51205260/16503677897650.32298333018402325-20220419183024.jpg">
+                                </li>
+
+                            </ul>
+                        </div>
+
+
+                    </div>
+
+
+
+                    <div class="comment comment--all ratingLst">
+
+
+                        <div class="comment__item par" id="r-51573210">
+                            <div class="item-top">
+                                <p class="txtname">Zhong Ng</p>
+                            </div>
+                            <div class="item-rate">
+                                <div class="comment-star">
+                                    <i class="fa-solid fa-star"></i>
+                                    <i class="fa-solid fa-star"></i>
+                                    <i class="fa-solid fa-star"></i>
+                                    <i class="fa-solid fa-star"></i>
+                                    <i class="fa-solid fa-star"></i>
+                                </div>
+
+
+                            </div>
+
+                            <div class="comment-content">
+                                <p class="cmt-txt">Tiền nào của nấy. Tầm giá này mà được cấu hình voi camera nhu a33 thi ngon nhât rôi</p>
+                            </div>
+                        </div>
+
+
+
+                        <div class="comment__item par" id="r-51676161">
+                            <div class="item-top">
+                                <p class="txtname">THOA</p>
+
+                            </div>
+                            <div class="item-rate">
+                                <div class="comment-star">
+                                    <i class="fa-solid fa-star"></i>
+                                    <i class="fa-solid fa-star"></i>
+                                    <i class="fa-solid fa-star"></i>
+                                    <i class="fa-solid fa-star"></i>
+                                    <i class="fa-solid fa-star"></i>
+                                </div>
+
+
+                            </div>
+
+                            <div class="comment-content">
+                                <p class="cmt-txt">Rấy tốt</p>
+                            </div>
+                        </div>
+
+                    </div>
+
+
+
+                    <div class="comment-btn">
+
+                        <a href="javascript:showInputRating();" class="comment-btn__item blue"><i class="iconratingnew-circlestar--big"></i>Viết đánh giá</a>
+                        <a href="/dtdd/samsung-galaxy-a33/danh-gia" class="comment-btn__item right-arrow"><span>Xem 41 đánh giá</span></a>
+                    </div>
+
+
+
+                    <div class="read-assess hide">
+                        <form class="input frtip" name="fRatingComment">
+                            <input type="hidden" name="hdfStar" id="hdfStar" value="0">
+                            <input type="hidden" name="hdfRtIsMobile" id="hdfRtIsMobile" value="false">
+                            <input type="hidden" name="hdfProductID" id="hdfProductID" value="246199">
+                            <input type="hidden" name="hdfIsShare" id="hdfIsShare" value="0">
+                            <input type="hidden" name="hdfSiteID" id="hdfSiteID" value="1">
+                            <input type="hidden" name="hdfRtImg" id="hdfRtImg" class="hdfRtImg" value="">
+                            <input type="hidden" name="hdfRtLink" id="hdfRtLink" value="https://www.thegioididong.com/dtdd/samsung-galaxy-a33">
+
+                            <div class="read-assess__top">
+                                <p class="read-assess__title">Đánh giá</p>
+                                <div class="read-assess-close btn-closemenu" onclick="hideInputRating()">Đóng</div>
+                            </div>
+
+                            <div class="read-assess-main">
+
+
+
+                                <div class="read-assess-form">
+                                    <div class="textarea">
+                                        <textarea class="ct" name="fRContent" placeholder="Mời bạn chia sẻ thêm một số cảm nhận về sản phẩm ..."></textarea>
+                                        <div class="textarea-bottom clearfix">
+                                            <a href="javascript:void(0)" class="send-img">
+                                                <i class="icondetail-camera"></i>
+                                                Gửi hình chụp thực tế
+                                            </a>
+                                            <input id="hdFileRatingUpload" type="file" class="hide" accept="image/x-png, image/gif, image/jpeg" multiple="">
+                                            <ul class="resRtImg hide">
+                                            </ul>
+                                        </div>
+                                    </div>
+
+
+                                    <div class="txt-agree">
+                                        <span></span>
+                                        <p>Tôi sẽ giới thiệu sản phẩm này cho bạn bè người thân</p>
+                                    </div>
+
+                                    <div class="list-input">
+                                        <input type="text" name="fRName" class="input-assess" placeholder="Họ và tên (bắt buộc)" value="">
+                                        <input type="text" name="fRPhone" class="input-assess" placeholder="Số điện thoại (bắt buộc)" value="">
+
+                                    </div>
+
+
+                                    <a class="submit-assess" href="javascript:submitRatingComment()">Gửi đánh giá ngay</a>
+                                    <span class="lbMsgRt hide"></span>
+
+                                    <p class="assess-txtbt">Để đánh giá được duyệt, quý khách vui lòng tham khảo <a href="/huong-dan-dang-binh-luan">Quy định duyệt đánh giá</a></p>
+                                </div>
+
+                            </div>
+
+
+                        </form>
+                    </div>
+
+                    <div class="rRepPopup hide">
+                        <div class="rRepPopup__top">
+                            <p class="rRepPopup__title">Nhập thông tin</p>
+                            <div class="rRepPopup-close c-btnclose" onclick="hideReplyConfirmPopup()">Đóng</div>
+                        </div>
+                        <div class="rCfmInfo" data-gender="">
+                            <div class="cgd ed">
+                                <span class="c_male" onclick="rSelGender(this, 1)"><i class="icondetail-rad"></i>&nbsp;Anh</span>
+                                <span class="c_female" onclick="rSelGender(this, 2)"><i class="icondetail-rad"></i>&nbsp;Chị</span>
+                            </div>
+                            <input type="text" placeholder="Họ tên (bắt buộc)" class="cfmUserName">
+                            <input type="text" placeholder="Email (để nhận phản hồi qua mail)" class="cfmUserEmail">
+                            <input type="text" placeholder="Số điện thoại" class="cfmPhone">
+                            <button type="submit" onclick="rCmtConfirmUser(true, true);">Cập nhật</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="box_right">
+
+                <div class="box04 box_normal">
+                    <div class="price-one">
+                        <div class="box-price">
+                            <p class="box-price-present">@Model.Price </p>
+
+
+                            <span class="label label--black">Trả góp 0%</span>
+                        </div>
+                    </div>
+
+                    <div class="block block-price1">
+                        <p class="showpromo-radio hide">Bạn chọn KM: <span></span></p>
+
+
+                    </div>
+                </div>
+                <div class="border7"></div>
+
+
+
+
+                <p class="parameter__title">Cấu hình  @Html.DisplayFor(model => model.Pro_Name)</p>
+                <div class="parameter">
+                    <ul class="parameter__list 246199 active">
+                        <li data-index="0" data-prop="0">
+                            <p class="lileft">Màn hình:</p>
+                            <div class="liright">
+                                <span class="comma">Super AMOLED</span>
+                                <span class="comma">6.4"</span>
+                                <span class="">Full HD+</span>
+                            </div>
+                        </li>
+                        <li data-index="0" data-prop="0">
+                            <p class="lileft">Hệ điều hành:</p>
+                            <div class="liright">
+                                <span class="">Android 12</span>
+                            </div>
+                        </li>
+                        <li data-index="0" data-prop="0">
+                            <p class="lileft">Camera sau:</p>
+                            <div class="liright">
+                                <span class="">Chính 48 MP &amp; Phụ 8 MP, 5 MP, 2 MP</span>
+                            </div>
+                        </li>
+                        <li data-index="0" data-prop="0">
+                            <p class="lileft">Camera trước:</p>
+                            <div class="liright">
+                                <span class="">13 MP</span>
+                            </div>
+                        </li>
+                        <li data-index="0" data-prop="0">
+                            <p class="lileft">Chip:</p>
+                            <div class="liright">
+                                <span class="">Exynos 1280</span>
+                            </div>
+                        </li>
+                        <li data-index="0" data-prop="0">
+                            <p class="lileft">RAM:</p>
+                            <div class="liright">
+                                <span class="">@Model.Ram GB</span>
+                            </div>
+                        </li>
+                        <li data-index="0" data-prop="0">
+                            <p class="lileft">Bộ nhớ trong:</p>
+                            <div class="liright">
+                                <span class="">@Model.Rom GB</span>
+                            </div>
+                        </li>
+                        <li data-index="0" data-prop="0">
+                            <p class="lileft">SIM:</p>
+                            <div class="liright">
+                                <span class="comma">2 Nano SIM (SIM 2 chung khe thẻ nhớ)</span>
+                                <span class="">Hỗ trợ 5G</span>
+                            </div>
+                        </li>
+                        <li data-index="0" data-prop="0">
+                            <p class="lileft">Pin, Sạc:</p>
+                            <div class="liright">
+                                <span class="comma">5000 mAh</span>
+                                <span class="">25 W</span>
+                            </div>
+                        </li>
+                    </ul>
+                    <span class="btn-detail btn-short-spec not-have-instruction">
+                        <span>Xem thêm cấu hình chi tiết</span>
+                    </span>
+                </div>
+
+                <div class="block-button normal">
+                    <a href="javascript:void(0);" class="btn-buynow jsBuy">MUA NGAY</a>
+
+                </div>
+
+            </div>
+
+        </div>
+
+
+        <div class="wrap_comment" title="Bình luận sản phẩm" id="comment" cmtcategoryid="2" siteid="1" detailid="246199" cateid="" urlpage="" pagesize="5" data-js="https://cdn.tgdd.vn/comment/Scripts/CommentDesktop.min.v202105111612.js" data-ismobile="False" data-jsovrcmt="https://cdn.tgdd.vn/mwgcart/mwgcore/js/Comment/overrideScript.min.v202206290200.js">
+            <div class="tltCmt">
+                <textarea id="txtEditor" name="" cols="" rows="" class="parent_input txtEditor" placeholder="Mời bạn để lại bình luận..." onclick="cmtaddcommentclick();" onkeyup="cmtaddcommentclick();"></textarea>    <div class="sortcomment">        <div class="statistical hide" id="notifycmtmsg">Bình luận mới vừa được thêm vào. <a href="javascript:void(0)">Click để xem</a></div>            </div>    <div class="clr"></div>
+
+            </div>
+            <div class="boxemotion">
+                <div class="motionsend">
+                    <input id="hdFileCmtUpload" type="file" class="hide" accept="image/x-png, image/gif, image/jpeg">
+                    <div class="cmt_right">
+                        <a class="btnSend" href="javascript:void(0)" id="btnSendCmt" onclick="cmtSend();">Gửi</a>
+                        <span class="loading hide">Đang xử lý...</span>
+                        <div class="captchacmt hide"></div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+        </div>
+        </div>
+
+        <div class="errorcompare" style="display:none;"></div>
+    </section>
+
+    <!-- footer-->
+    <footer class="footer">
+        <section class="clearfix footer__top" style="display: flex">
+            <div class="footer-col">
+                <ul class="f-listmenu">
+                    <li>
+                        <p>Chính sách bảo hành</p>
+                    </li>
+                    <li>
+                        <p>Giao Hàng & Thanh Toán</p>
+                    </li>
+                    <li>
+                        <p>Quy chế hoạt động</p>
+                    </li>
+                    <li>
+                        <p>Cảnh bảo giả mạo</p>
+                    </li>
+                </ul>
+            </div>
+            <div class="footer-col">
+                <ul class="f-listmenu">
+                    <li>
+                        <p>Giới thiệu công ty (MWG.vn)</p>
+                    </li>
+                    <li>
+                        <p>Tuyển dụng</p>
+                    </li>
+                    <li>
+                        <p>Gửi góp ý , khiếu nại</p>
+                    </li>
+                </ul>
+            </div>
+            <div class="footer-col">
+                <ul class="f-listmenu">
+                    <li>
+                        <p><strong>Tổng đài hỗ trợ</strong> (Miễn phí gọi)</p>
+                    </li>
+                    <li>
+                        <p>Gọi mua: <span>1800.1060</span> (7.30 - 22.00)</p>
+                    </li>
+                    <li>
+                        <p>Kỹ Thuật: <span>1800.1763</span> (7.30 - 22.00)</p>
+                    </li>
+                    <li>
+                        <p>Khiếu nãi: <span>1800.1062</span> (7.30 - 21.30)</p>
+                    </li>
+                    <li>
+                        <p>Bảo Hành: <span>1800.1064</span> (7.30 - 21.00)</p>
+                    </li>
+                </ul>
+            </div>
+            <div class="footer-col">
+                <div class="f-social">
+                    <p class="link-fb">
+                        <img class="icon-fb" src="assets/img/logo-icon-footer2.png"></img>
+                        3735.7k Fan
+                    </p>
+                    <p></p>
+                </div>
+            </div>
+        </section>
+        <div class="footer-end">
+            <section>
+                <p>
+                    © 2018. Công ty cổ phần Thế Giới Di Động. GPDKKD: 0303217354 do sở
+                    KH & ĐT TP.HCM cấp ngày 02/01/2007. GPMXH: 238/GP-BTTTT do Bộ
+                    Thông Tin và Truyền Thông cấp ngày 04/06/2020. Địa chỉ: 128 Trần
+                    Quang Khải, P. Tân Định, Q.1, TP.Hồ Chí Minh. Điện thoại: 028
+                    38125960. Email: cskh@thegioididong.com. Chịu trách nhiệm nội
+                    dung: Huỳnh Văn Tốt. Xem chính sách sử dụng
+                </p>
+            </section>
+        </div>
+    </footer>
+    <!-- end -->
+    </div>
+
+
+</body>
+</html>
+Đang hiển thị 8017673523992231065.
